@@ -89,7 +89,7 @@ def send_message(recipient_id, message_text,message_type):
 		chatbot.train("chatterbot.corpus.english.conversations")
 		
 # Get a response to an input statement
-		chatterbot.train([message_text,])
+		#chatterbot.train([message_text,])
 		message_text = str(chatbot.get_response(message_text))
 		
 
