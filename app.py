@@ -4,8 +4,6 @@ import requests
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from flask import Flask , render_template, json, request
-chatterbot = ChatBot("Patrick")
-chatterbot.set_trainer(ListTrainer)
 app = Flask(__name__)
 accessToken = "EAAQB0iYXKLABAC4NHvGiPIrAdRsVYsgBIkjVbYolxFoSTQKHBRiCNojTVIXHRCwZBvQKIBZBs8JQojmrLjWTCMZAcI8ZC8uXjQ0BDZCjZBv3MJjTxkdLUgZCGls7LCZAUxYLfc2QpBWUDTNZA4z6ci19JqgQZAZCZC03gLi8tcaZBBqqV4QZDZD"
 verify_token = "my_vase_token_bra"
@@ -80,15 +78,15 @@ def send_message(recipient_id, message_text,message_type):
 	  
 	
 	    else:
-		chatbot = ChatBot('Ron Obvious',trainer='Patrick')
+		chatbot = ChatBot('Ron Obvious',trainer='chatterbot.trainers.ChatterBotCorpusTrainer')
 
 # Train based on the english corpus
-		#chatbot.train("chatterbot.corpus.english")
+		chatbot.train("chatterbot.corpus.english")
 		# Train based on english greetings corpus
-		#chatbot.train("chatterbot.corpus.english.greetings")
+		chatbot.train("chatterbot.corpus.english.greetings")
 
 # Train based on the english conversations corpus
-		#chatbot.train("chatterbot.corpus.english.conversations")
+		chatbot.train("chatterbot.corpus.english.conversations")
 		
 # Get a response to an input statement
 		chatterbot.train([message_text,])
@@ -151,4 +149,4 @@ def send_message(recipient_id, message_text,message_type):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
