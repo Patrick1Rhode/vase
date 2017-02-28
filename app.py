@@ -9,7 +9,9 @@ accessToken = "EAAQB0iYXKLABAC4NHvGiPIrAdRsVYsgBIkjVbYolxFoSTQKHBRiCNojTVIXHRCwZ
 verify_token = "my_vase_token_bra"
 hub_verify_token = None
 
-
+@app.route("/policy")
+def index():
+    return render_template('index.html')
 
 @app.route('/request',methods=['GET'])
 def facebookrequest():
